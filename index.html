@@ -12,16 +12,18 @@
     <link
       rel="stylesheet"
       title="default"
-      href="https://unpkg.com/amis@beta/sdk/sdk.css"
+      href="sdk/sdk.css"
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/amis@beta/sdk/helper.css"
+      href=sdk/helper.css"
     />
-    <script src="https://unpkg.com/amis@beta/sdk/sdk.js"></script>
+    <script src="sdk/sdk.js"></script>
     <script src="https://unpkg.com/vue@2"></script>
     <script src="https://unpkg.com/history@4.10.1
 /umd/history.js"></script>
+    <script src="./public/js-yaml.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <style>
       html,
       body,
@@ -148,6 +150,16 @@
               }
 
               history[replace ? 'replace' : 'push'](location);
+            },
+            responseAdaptor(api, payload, query, request, response){
+              if (api.url.indexOf('yaml') !== -1){
+                let obj = jsyaml.load(payload)
+                payload = {
+                  data: obj,
+                  status: 0
+                }
+              }
+              return payload
             },
             jumpTo: (to, action) => {
               if (to === 'goBack') {

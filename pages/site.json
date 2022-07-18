@@ -119,6 +119,10 @@
           {
             "label": "jsonp 返回示例",
             "schemaApi": "jsonp:/pages/jsonp.js?callback=jsonpCallback"
+          },
+          {
+            "label": "yaml",
+            "schemaApi": "get:/yaml/time.yaml"
           }
         ]
       }

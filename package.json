@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js",
+    "build": "fis3 release -d ./dist",
     "gh-pages": "rm -rf gh-pages && fis3 release gh-pages -c",
     "deploy-gh-pages": "git subtree push --prefix gh-pages origin gh-pages"
   },
@@ -19,9 +20,15 @@
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
+    "js-yaml": "^4.1.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "reload": "^3.1.1"
+  },
+  "dependencies": {
+    "amis": "^1.9.1-beta.30",
+    "yamljs": "^0.3.0"
   }
 }
